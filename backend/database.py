@@ -1,9 +1,9 @@
 from model import Todo
-
+from decouple import config
 # MongoDB driver
 import motor.motor_asyncio
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+client = motor.motor_asyncio.AsyncIOMotorClient(f'mongodb://{config("HOST")}:{config("PORT")}')
 database = client.TodoList
 collection = database.todo
 

@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from model import Todo
 
+import uvicorn
+
 # App object
 app = FastAPI()
 
@@ -64,3 +66,7 @@ async def delete_todo(title):
     if response:
         return response
     raise HTTPException(404, f"There is no ToDo item with title {title}")
+
+
+if __name__ == '__main__':
+    uvicorn.run(app)
